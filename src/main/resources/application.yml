@@ -1,0 +1,21 @@
+api:
+  name: order_management
+  version: v1
+server:
+  servlet:
+    context-path: /order_management/v1/
+  port: 9050
+springdoc:
+  api-docs:
+    path: /api-docs
+spring:
+  data:
+    mongo:
+      repositories:
+        enabled: true
+    mongodb:
+      uri: mongodb://localhost:27017/ordersDetails
+      database: orderManagement
+app:
+  async:
+    thread_size: 50
