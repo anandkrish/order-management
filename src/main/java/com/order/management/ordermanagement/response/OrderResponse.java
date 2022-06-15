@@ -5,25 +5,38 @@ import com.order.management.ordermanagement.model.OrderError;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author Exzion
  */
 @Data
 public class OrderResponse {
-    private OrderDTO orderDetails;
+    private List<OrderDTO> orderDetails;
 
     private OrderError orderError;
 
-    public OrderResponse(OrderDTO orderDetails) {
+    public List<OrderDTO> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDTO> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public OrderError getOrderError() {
+        return orderError;
+    }
+
+    public void setOrderError(OrderError orderError) {
+        this.orderError = orderError;
     }
 
     public OrderResponse(OrderError orderError) {
         this.orderError = orderError;
     }
 
-    public OrderResponse(OrderDTO orderDetails, OrderError orderError) {
+    public OrderResponse(List<OrderDTO> orderDetails) {
         this.orderDetails = orderDetails;
-        this.orderError = orderError;
     }
 }

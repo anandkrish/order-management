@@ -12,10 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,12 +37,12 @@ public class OrderProcessingController {
 
 
 
-    @RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrderResponse> createApplication(
             @Validated @RequestBody OrderDTO orderDetails) {
         Optional<OrderDTO> order = orderManagementService.submitOrder(orderDetails);
         if(order.isPresent()) {
-            return new ResponseEntity<>(new OrderResponse(order.get()), HttpStatus.CREATED);
+            return new ResponseEntity<>(new OrderResponse(List.of(order.get())), HttpStatus.CREATED);
 
         } else {
             List<ErrorDetails> errorDetails = List.of(new ErrorDetails("101","Order submission failed"));
@@ -51,6 +50,21 @@ public class OrderProcessingController {
             return new ResponseEntity<>
                     (new OrderResponse(orderError), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+
+
+    @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OrderResponse> getAllOrders() {
+        List<OrderDTO> orderDetailsList = orderManagementService.getAllOrders();
+        return new ResponseEntity<>(new OrderResponse(orderDetailsList), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{orderId}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<OrderResponse> getOrderById(
+            @PathVariable(value = "orderId") @NotBlank final String orderId) {
+        OrderDTO orderById = orderManagementService.getOrderById(orderId);
+        return new ResponseEntity<>(new OrderResponse(List.of(orderById)), HttpStatus.OK);
     }
 
 }
