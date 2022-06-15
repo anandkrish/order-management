@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -38,24 +39,20 @@ public class OrderManagementService {
     }
 
 
-    public OrderDTO submitOrder(OrderDTO orderDTO) {
+    public Optional<OrderDTO> submitOrder(OrderDTO orderDTO) {
         LocalDateTime rightNow = LocalDateTime.now();
-        OrderDetails orderData = new OrderDetails();
-        orderData.setOrderId(UUID.randomUUID().toString());
-        orderData.setCustomerName(orderDTO.getCustomerName());
-        orderData.setShipmentAddress(orderDTO.getShipmentAddress());
-        orderData.setPhoneNumber(orderDTO.getPhoneNumber());
-        orderData.setOrderStatus(OrderStatus.PLACED.toString());
-        orderData.setProductList(orderDTO.getProductList());
-        orderData.setCreatedTimestamp(rightNow);
-        orderData.setUpdateTimestamp(rightNow);
-        List<Product> productList = orderDTO.getProductList();
 
+        OrderDetails orderData = orderMapper.toEntity(orderDTO);
+        orderData.setOrderId(UUID.randomUUID().toString());
+       orderData.setCreatedTimestamp(rightNow);
+       orderData.setUpdateTimestamp(rightNow);
+       orderData.setOrderStatus(OrderStatus.PLACED.toString());
+        List<Product> productList = orderDTO.getProductList();
         orderData.setTotalPrice(productList.stream()
                 .mapToDouble(order -> order.getPrice()).sum());
-        OrderDetails savedData = orderDetailRepository.save(orderData);
-        // TODO:: replace with mapstruct
 
-        return orderDTO;
+        OrderDetails savedData = orderDetailRepository.save(orderData);
+
+        return Optional.of(orderMapper.toDto(savedData));
     }
 }

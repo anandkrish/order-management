@@ -2,6 +2,7 @@ package com.order.management.ordermanagement.utils;
 
 import java.util.List;
 
+
 public interface EntityMapper <D, E> {
 
     public E toEntity(D dto);

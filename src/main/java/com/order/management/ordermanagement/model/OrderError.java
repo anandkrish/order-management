@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class Error {
+public class OrderError {
 
     private int status;
 
