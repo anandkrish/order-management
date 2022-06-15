@@ -19,3 +19,7 @@ spring:
 app:
   async:
     thread_size: 50
+  kafka:
+    topic_name: order-details
+    server: 127.0.0.1:9092
+    compression-type: gzip
