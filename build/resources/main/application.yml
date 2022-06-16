@@ -19,6 +19,9 @@ spring:
 app:
   async:
     thread_size: 50
+  auth:
+    header: x-auth-token
+    token: cc830fca-115b-44a4-94f9-1e937a8b76a4
   kafka:
     topic_name: order-details
     server: 127.0.0.1:9092

@@ -2,7 +2,7 @@ package com.order.management.ordermanagement.mapper;
 
 import com.order.management.ordermanagement.dto.OrderDTO;
 import com.order.management.ordermanagement.model.Product;
-import com.order.management.ordermanagement.repository.OrderDetails;
+import com.order.management.ordermanagement.repository.order.OrderDetails;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-15T23:54:27+0530",
+    date = "2022-06-16T19:51:20+0530",
     comments = "version: 1.5.1.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.1.jar, environment: Java 11.0.2 (Oracle Corporation)"
 )
 @Component

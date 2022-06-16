@@ -1,4 +1,4 @@
-package com.order.management.ordermanagement.repository;
+package com.order.management.ordermanagement.repository.order;
 
 import com.order.management.ordermanagement.model.Product;
 import org.springframework.data.annotation.Id;
@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * @author Exzion
  */
-
 
 @Document(collection = "orderDetails")
 public class OrderDetails implements Serializable {

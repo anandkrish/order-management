@@ -1,7 +1,7 @@
 package com.order.management.ordermanagement.mapper;
 
 import com.order.management.ordermanagement.dto.OrderDTO;
-import com.order.management.ordermanagement.repository.OrderDetails;
+import com.order.management.ordermanagement.repository.order.OrderDetails;
 import com.order.management.ordermanagement.utils.EntityMapper;
 import org.mapstruct.*;
 

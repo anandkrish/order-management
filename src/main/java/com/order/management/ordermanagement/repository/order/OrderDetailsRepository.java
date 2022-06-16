@@ -1,4 +1,4 @@
-package com.order.management.ordermanagement.repository;
+package com.order.management.ordermanagement.repository.order;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
