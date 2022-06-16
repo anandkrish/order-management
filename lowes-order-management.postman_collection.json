@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "21319f29-bf3e-42e4-9d3b-1af6598c900c",
+		"name": "lowes-order-management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test end point",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9050/order_management/v1/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9050",
+					"path": [
+						"order_management",
+						"v1",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Cookie",
+						"value": "user=exzion",
+						"type": "default"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "cc830fca-115b-44a4-94f9-1e937a8b76a4",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \"expectedDeliveryDate\": \"\",\r\n \"shipmentAddress\": \"Chennai, INdia\",\r\n \"customerName\": \"Anand\",\r\n \"customerId\": \"99999\",\r\n \"phoneNumber\": \"9952563200\",\r\n \"productList\": [{\r\n    \"productId\": \"P8971\",    \r\n    \"productName\": \"HOme products\",   \r\n    \"price\": 500,    \r\n    \"productType\" : \"Decor\"\r\n },{\r\n    \"productId\": \"P8171\",    \r\n    \"productName\": \"Item1\",   \r\n    \"price\": 100,    \r\n    \"productType\" : \"Fashion\"\r\n }]\r\n \r\n }\r\n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9050/order_management/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9050",
+					"path": [
+						"order_management",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Orders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Cookie",
+						"value": "user=exzion",
+						"type": "default"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "cc830fca-115b-44a4-94f9-1e937a8b76a4",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9050/order_management/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9050",
+					"path": [
+						"order_management",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9050/order_management/v1/orders/?Content-Type=application/json&Cookie=user=exzion&x-auth-token=cc830fca-115b-44a4-94f9-1e937a8b76a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9050",
+					"path": [
+						"order_management",
+						"v1",
+						"orders",
+						""
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Cookie",
+							"value": "user=exzion"
+						},
+						{
+							"key": "x-auth-token",
+							"value": "cc830fca-115b-44a4-94f9-1e937a8b76a4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"exzion\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9050/order_management/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9050",
+					"path": [
+						"order_management",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
