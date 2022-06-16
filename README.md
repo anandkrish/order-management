@@ -58,7 +58,7 @@
       
       
  #### Postman collection updated in repo\
-  - lowes-order-management.postman_collection.json
+  - order-management.postman_collection.json
  
  - Use below end point to generate token\
  ```/order_management/v1/login```
