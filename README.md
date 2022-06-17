@@ -63,6 +63,7 @@
  - Use below end point to generate token\
  ```/order_management/v1/login```
  
+ #### Authentication
  - For all other secured end points add following headers
   
 ![Headers](auth_postman.JPG) 
