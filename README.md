@@ -62,3 +62,34 @@
  
  - Use below end point to generate token\
  ```/order_management/v1/login```
+ 
+ - For all other secured end points add following headers
+  
+![Headers](auth_postman.JPG) 
+
+
+``` 
+curl --location --request POST 'http://localhost:9050/order_management/v1/orders' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: user=exzion' \
+--header 'x-auth-token: cc830fca-115b-44a4-94f9-1e937a8b76a4' \
+--data-raw ' { "expectedDeliveryDate": "",
+ "shipmentAddress": "Chennai, INdia",
+ "customerName": "Anand",
+ "customerId": "99999",
+ "phoneNumber": "9952563200",
+ "productList": [{
+    "productId": "P8971",    
+    "productName": "HOme products",   
+    "price": 500,    
+    "productType" : "Decor"
+ },{
+    "productId": "P8171",    
+    "productName": "Item1",   
+    "price": 100,    
+    "productType" : "Fashion"
+ }]
+ 
+ }
+ ```
+  
